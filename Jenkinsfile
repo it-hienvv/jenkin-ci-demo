@@ -7,8 +7,6 @@ pipeline {
             }
             steps {
                 sh 'java -version'
-            }
-            steps {
                 echo 'executing yarn ...'
                 sh 'cd android && bundle install && bundle exec fastlane build_rl'
             }
