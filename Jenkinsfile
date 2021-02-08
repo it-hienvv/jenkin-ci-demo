@@ -4,11 +4,8 @@ pipeline {
         stage('build') {
             steps {
                 echo 'executing yarn ...'
-                GIT_COMMIT_EMAIL = sh (
-                    script: 'which fastlane',
-                    returnStdout: true
-                ).trim()
-                echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+                sh 'cd android && bundle install'
+                sh '~/.fastlane/bin/bundle/bin/fastlane build_rl'
             }
         }
     }
