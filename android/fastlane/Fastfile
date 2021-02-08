@@ -1,0 +1,99 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  # Setup yarn
+  desc "Yarn installll"
+  lane :setup_yarn do
+    package_json_path = '../package.json'
+    yarn(
+      command: 'flr', 
+      step_name: 'Prebuild', 
+      auto_install_dependencies: true, 
+      package_path: package_json_path,
+    )
+    puts "Setup yarn sucess"
+  end
+  # Build Apk
+
+  desc "Build apk......."
+  lane :build_rl do
+    key_password = ENV['KEY_STORE_PASSWORD']
+    store_password = ENV['ALIAS_STORE_PASSWORD']
+    releaseFilePath = File.join(Dir.pwd, "..", "my-upload-key.keystore")
+    gradle(task: 'clean')
+    android_set_version_code(
+      version_code: ENV['VERSION_CODE'], # optional, if not specified, Version Code will be incremented
+      gradle_file: "app/build.gradle" # optional
+    )
+    android_set_version_name(
+      version_name: ENV['VERSION'],
+      gradle_file: "app/build.gradle" # optional
+    )
+    gradle(
+      task: 'assemble',
+      build_type: 'Release',
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => releaseFilePath,
+        "android.injected.signing.store.password" => store_password,
+        "android.injected.signing.key.alias" => "my-key-alias",
+        "android.injected.signing.key.password" => key_password,
+        "versionCode" => ENV['VERSION_CODE'],
+        "versionName" => ENV['VERSION'],
+      }
+    )
+  end
+
+  # Make folder build
+  desc "Make folder build-apk in fastlane folder........."
+  lane :make_folder do
+    sh("mkdir", "../build-notes") unless File.exist?("../build-notes")
+    sh("mkdir", "../build-notes/apk") unless File.exist?("../build-notes/apk")
+    sh("mkdir", "../build-notes/notes") unless File.exist?("../build-notes/notes")
+    # APK_LOCATION = "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}"
+    # puts “APK path: #{APK_LOCATION}”
+    apk_name = "#{ENV['VERSION']}_b#{ENV['VERSION_CODE']}.apk"
+    sh("cp ../app/build/outputs/apk/release/app-release.apk ../build-notes/apk/#{apk_name}")
+    sh("open ../build-notes/apk")
+  end
+
+  #Distribute firebase
+  desc "Distribution to firebase......."
+  lane :distribute_firebase do
+    apk_name = "#{ENV['VERSION']}_b#{ENV['VERSION_CODE']}.apk"
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_DISTRIBUTION_KEY"],
+      # testers: "dtthuyhd2504@gmail.com, hienvukhmt93@gmail.com",
+      # testers_file: "./build-notes/notes/test.txt",
+      release_notes: "
+       - Change port
+      ",
+      firebase_cli_token: ENV["FIREBASE_APP_DISTRIBUTION_CLI_TOKEN"],
+      apk_path: "./build-notes/apk/#{apk_name}",
+      # groups: "test-group"
+      groups: "mb-app-test,tester-trải-nghiệm"
+    )
+  end
+  desc "Run all......."
+  lane :run_all do
+    setup_yarn
+    build_rl
+    make_folder
+    distribute_firebase
+  end
+end
