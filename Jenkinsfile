@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             tools {
                 jdk "JDK 8"
-                nodejs "NodeJS 10"
+                nodejs "NodeJs10"
             }
             steps {
                 sh 'java -version'
