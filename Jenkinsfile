@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 echo 'executing yarn ...'
-                sh 'cd android && bundle install'
+                sh 'cd android && bundle install && bundle exec fastlane build_rl'
             }
         }
     }
