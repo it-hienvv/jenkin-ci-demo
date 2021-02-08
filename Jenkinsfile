@@ -4,7 +4,11 @@ pipeline {
         stage('build') {
             steps {
                 echo 'executing yarn ...'
-                sh 'which fastlane'
+                GIT_COMMIT_EMAIL = sh (
+                    script: 'which fastlane',
+                    returnStdout: true
+                ).trim()
+                echo "Git committer email: ${GIT_COMMIT_EMAIL}"
             }
         }
     }
