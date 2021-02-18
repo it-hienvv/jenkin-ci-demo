@@ -10,7 +10,7 @@ pipeline {
                 sh 'java -version'
                 sh 'npm i'
                 echo 'executing yarn ...'
-                sh 'cd android && bundle install && bundle exec fastlane build_rl'
+                sh 'cd android && bundle install && bundle exec fastlane run_all'
             }
         }
     }
