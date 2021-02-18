@@ -91,7 +91,7 @@ platform :android do
   end
   desc "Run all......."
   lane :run_all do
-    setup_yarn
+    # setup_yarn
     build_rl
     make_folder
     distribute_firebase

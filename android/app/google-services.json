@@ -1,0 +1,171 @@
+{
+  "project_info": {
+    "project_number": "651527928818",
+    "firebase_url": "https://rmchatapp-734b4.firebaseio.com",
+    "project_id": "rmchatapp-734b4",
+    "storage_bucket": "rmchatapp-734b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651527928818:android:05756595116fe6c029896b",
+        "android_client_info": {
+          "package_name": "com.buildci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651527928818-jq33eqvettp6atiu175t1dv76t97nep6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.buildci",
+            "certificate_hash": "b210a8d9b0014f24bec114b7437b28240b2f2f01"
+          }
+        },
+        {
+          "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqa4WP6OZ39i_6MbtmG5rHRIiqde30G4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651527928818-0nj3t58628q52rgmmj88m28uekkgbcc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mbmobile.chatapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651527928818:android:f715e7569c13f95129896b",
+        "android_client_info": {
+          "package_name": "com.mbbankretail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651527928818-f91519ir3e1i3hplop38ern20kv3cofd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mbbankretail",
+            "certificate_hash": "b210a8d9b0014f24bec114b7437b28240b2f2f01"
+          }
+        },
+        {
+          "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqa4WP6OZ39i_6MbtmG5rHRIiqde30G4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651527928818-0nj3t58628q52rgmmj88m28uekkgbcc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mbmobile.chatapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651527928818:android:d44174c7c535141629896b",
+        "android_client_info": {
+          "package_name": "com.mbmobile.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqa4WP6OZ39i_6MbtmG5rHRIiqde30G4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651527928818-0nj3t58628q52rgmmj88m28uekkgbcc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mbmobile.chatapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651527928818:android:a3e0fd837a138fef29896b",
+        "android_client_info": {
+          "package_name": "com.rocketchatrn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqa4WP6OZ39i_6MbtmG5rHRIiqde30G4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651527928818-k1afdbv77hhv73je904pruc2jspgpu2a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651527928818-0nj3t58628q52rgmmj88m28uekkgbcc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mbmobile.chatapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
