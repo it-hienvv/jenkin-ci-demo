@@ -11,9 +11,12 @@ pipeline {
                	echo 'executing yarn ...'
                 sh 'yarn'
                 echo 'bundle install ...'
-		        sh 'cd android'
-	            sh 'bundle install --path vendor/bundle'
-		        echo 'fast lane run ...'
+		dir('android') {
+      		   sh "pwd"
+                }
+		sh 'cd android'
+	        sh 'bundle install --path vendor/bundle'
+		echo 'fast lane run ...'
                 sh 'bundle exec fastlane run_all'
             }
         }
