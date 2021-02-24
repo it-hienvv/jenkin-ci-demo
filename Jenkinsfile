@@ -13,11 +13,10 @@ pipeline {
                 echo 'bundle install ...'
 		dir('android') {
       		   sh "pwd"
+		   sh 'bundle install --path vendor/bundle'
+		   echo 'fast lane run ...'
+                   sh 'bundle exec fastlane run_all'
                 }
-		sh 'cd android'
-	        sh 'bundle install --path vendor/bundle'
-		echo 'fast lane run ...'
-                sh 'bundle exec fastlane run_all'
             }
         }
     }
