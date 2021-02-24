@@ -8,9 +8,13 @@ pipeline {
             }
             steps {
                 sh 'java -version'
-                sh 'npm i'
-                echo 'executing yarn ...'
-                sh 'cd android && bundle install && bundle exec fastlane run_all'
+               	echo 'executing yarn ...'
+                sh 'yarn'
+                echo 'bundle install ...'
+		        sh 'cd android'
+	            sh 'bundle install --path vendor/bundle'
+		        echo 'fast lane run ...'
+                sh 'bundle exec fastlane run_all'
             }
         }
     }
