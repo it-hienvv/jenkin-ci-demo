@@ -1,0 +1,149 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :register_app do
+    create_app_online(
+      username: "ithienvv@gmail.com",
+      app_identifier: "com.projectCiCdDemoAti.ati",
+      app_name: "ProjectCiCdDemo",
+      language: "English",
+      app_version: "1.0",
+      sku: "123",
+      team_name: "ADVANCED TECHNOLOGY INVESTMENT JOINT STOCK COMPANY", # Only necessary when in multiple teams.,
+      itc_team_id: "120185937",
+      skip_itc: true
+    )
+  end
+  lane :get_cert_sigh do
+    # add actions here: https://docs.fastlane.tools/actions
+    cert(
+      development: true,
+      username: "ithienvv@gmail.com",
+      team_name: "ADVANCED TECHNOLOGY INVESTMENT JOINT STOCK COMPANY",
+      team_id: "XG7L4W66FJ",
+      platform: "ios",
+      output_path: "cert-build",
+      filename: "IOS_CICD_DEMO_APP_CER"
+    )
+    # sigh(
+    #   development: true,
+    #   username: "ithienvv@gmail.com",
+    #   team_name: "ADVANCED TECHNOLOGY INVESTMENT JOINT STOCK COMPANY",
+    #   team_id: "XG7L4W66FJ",
+    #   app_identifier: "com.projectCiCdDemoAti.ati",
+    #   output_path: "cert-build",
+    #   filename: "IOS_CICD_DEMO_APP_ADHOC.mobileprovision"
+    # )
+  end
+  lane :match_all do
+    match(
+      username: "ithienvv@gmail.com",
+      team_name: "ADVANCED TECHNOLOGY INVESTMENT JOINT STOCK COMPANY",
+      team_id: "XG7L4W66FJ",
+      type: "development",
+      storage_mode: "git",
+      git_url: "https://github.com/it-hienvv/cer-project-cicd-demo",
+      git_branch: "master",
+      platform: "ios",
+      profile_name: "Project_CICD_Demo_DEV.mobileprovision",
+      app_identifier: "com.projectCiCdDemoAti.ati",
+      force: true,
+      output_path: "cert-build",
+      git_full_name: 'Vũ Văn Hiền',
+      git_user_email: 'ithienvv@gmail.com'
+    )
+    match(
+      username: "ithienvv@gmail.com",
+      team_name: "ADVANCED TECHNOLOGY INVESTMENT JOINT STOCK COMPANY",
+      team_id: "XG7L4W66FJ",
+      type: "adhoc",
+      storage_mode: "git",
+      git_url: "https://github.com/it-hienvv/cer-project-cicd-demo",
+      git_branch: "master",
+      platform: "ios",
+      profile_name: "Project_CICD_Demo_ADHOC.mobileprovision",
+      app_identifier: "com.projectCiCdDemoAti.ati",
+      force: true,
+      git_full_name: 'Vũ Văn Hiền',
+      git_user_email: 'ithienvv@gmail.com',
+      output_path: "cert-build"
+    )
+  end
+  lane :build_ios do
+      # increment_build_number(
+      #   build_number: "2" # set a specific number
+      # )
+      increment_build_number
+      # increment_version_number(
+      #   version_number: "1.0.0" # Set a specific version number
+      # )
+      build_ios_app(
+        workspace: 'buildCi.xcworkspace', 
+        scheme: 'buildCi',
+        clean: true,
+        output_directory: 'build-ipa', # Destination directory. Defaults to current directory.
+        include_bitcode: true,
+        include_symbols: true,
+        output_name: 'build.ipa',
+        export_team_id: 'XG7L4W66FJ',
+        export_method: "ad-hoc",
+        export_options: {
+          method: 'ad-hoc',
+          provisioningProfiles: { 
+            'com.projectCiCdDemoAti.ati' => 'Project_CICD_Demo_ADHOC.mobileprovision',
+        }
+      }
+    )
+  end
+  lane :pre_build_setup do
+    # fastlane_dir = %x(pwd)
+    # absolute_path = Pathname.new(File.expand_path(fastlane_dir)).parent
+    cocoapods(
+      clean_install: true,
+      podfile: "./Podfile"
+    )
+    # sh "pwd"
+    # Dir.chdir("../..") do
+    #   sh 'pwd'
+    #   sh 'git pull'
+    #   sh 'yarn'
+    # end
+    # Dir.chdir("..") do
+    #   sh 'pwd'
+    #   sh 'pod install'
+    # end
+  end
+  lane :git_action do
+    Dir.chdir("../..") do
+      sh 'pwd'
+      sh 'git pull'
+      sh 'yarn'
+    end
+  end
+  # lane :run_all do
+  #   # git_action
+  #   pre_build_setup
+  #   build_ios
+  # end
+  lane :config_app do
+    register_app
+    match_all
+    build_ios
+  end
+end

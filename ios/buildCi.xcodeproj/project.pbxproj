@@ -194,7 +194,6 @@
 				18F0EE525256249FC73903B1 /* Pods-buildCi-tvOSTests.debug.xcconfig */,
 				BBD703B5E0F11DDDC5597E61 /* Pods-buildCi-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -664,7 +663,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.projectCiCdDemoAti.ati;
 				PRODUCT_NAME = buildCi;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -686,7 +685,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.projectCiCdDemoAti.ati;
 				PRODUCT_NAME = buildCi;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
