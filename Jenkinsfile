@@ -21,8 +21,6 @@ pipeline {
         }
         
         
-        
-        
         stage('build ios') {
             tools {
                 jdk 'JDK 8'
