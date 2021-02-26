@@ -10,12 +10,12 @@ pipeline {
                 sh 'java -version'
                 echo 'executing yarn ...'
                 sh 'yarn'
-                // echo 'bundle install ...'
+                echo 'bundle install ...'
                 dir('android') {
                     sh 'pwd'
-                    // sh 'bundle install --path vendor/bundle'
+                    sh 'bundle install --path vendor/bundle'
                     echo 'fast lane run ...'
-                    sh 'bundle exec fastlane distribute_firebase'
+                    sh 'bundle exec fastlane run_all'
                 }
             }
         }
