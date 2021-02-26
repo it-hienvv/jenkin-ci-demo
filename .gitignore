@@ -57,3 +57,9 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+/android/vendor/
+/ios/vendor/
+/android/Gemfile.lock
+/android/.bundle/
+/ios/.bundle/
+
