@@ -142,8 +142,8 @@ platform :ios do
     build_ios
   end
   lane :config_app do
-    # register_app
-    # match_all
-    build_ios
+    register_app
+    match_all
+    # build_ios
   end
 end
