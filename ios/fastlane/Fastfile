@@ -137,7 +137,7 @@ platform :ios do
     end
   end
   lane :run_all do
-    git_action
+    # git_action
     pre_build_setup
     build_ios
   end
