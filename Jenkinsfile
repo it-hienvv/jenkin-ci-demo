@@ -22,7 +22,7 @@ pipeline {
 
         stage('build ios') {
             tools {
-                xcodebuild 'Xcode12'
+                xcode 'Xcode12'
                 jdk 'JDK 8'
                 nodejs 'NodeJs10'
             }
